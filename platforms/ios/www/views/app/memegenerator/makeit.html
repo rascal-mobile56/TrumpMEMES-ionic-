@@ -1,0 +1,70 @@
+<ion-view class="bookmarks-view" cache-view="false">
+  <ion-nav-title>
+    <span>Make your own MEME</span>
+  </ion-nav-title>
+
+  <ion-content>
+  <div  ng-if="dataShow" class="post-actions row">
+    <div class="actions col col-center col-34">
+      Header Text Size
+    </div>
+    <div class="read-more col col-center col-33">
+      <a href="#"  class="button button-small button-block button-dark" ng-click="incfont()">
+        A+
+      </a>
+    </div>
+    <div class="read-more col col-center col-33">
+      <a href="#"  class="button button-small button-block button-dark" ng-click="decfont()">
+        A-
+      </a>
+    </div>
+  </div>
+
+    <div ng-if="!dataShow" class="item item-input">
+      <input type="text" placeholder="Header Text" name="username" ng-model="user.header">
+    </div>
+    <div ng-if="!dataShow" class="item item-input">
+      <input type="text" placeholder="Footer Text" name="username" ng-model="user.footer">
+    </div>
+
+    <div class="imageShow" id="imagess">
+      <div id="headerTxt" class="imageShow top-part">{{headerText}}</div>
+      <img class="user-img" ng-src="{{editIamge}}" />
+      <div id="footerTxt" class="imageShow bottom-part">{{footerText}}</div>
+    </div>
+
+    <div  ng-if="dataShow" class="post-actions row">
+      <div class="actions col col-center col-34">
+        Footer Text Size
+      </div>
+      <div class="read-more col col-center col-33">
+        <a href="#"  class="button button-small button-block button-dark" ng-click="incfont2()">
+          A+
+        </a>
+      </div>
+      <div class="read-more col col-center col-33">
+        <a href="#"  class="button button-small button-block button-dark" ng-click="decfont2()">
+          A-
+        </a>
+      </div>
+    </div>
+
+    <!-- <div ng-if="dataShow==true">
+      Refresh this page for success</div>
+    <div id="divID"></div> -->
+
+    <div class="list padding">
+
+      <button ng-if="!dataShow" class="button ion-ios-color-wand button-assertive button-block make-it" ng-click="makeIt()">
+        Preview it
+      </button>
+      <button ng-if="dataShow" class="button ion-share button-assertive button-block make-it" ng-click="shareIt()">
+        Share it
+      </button>
+      <button type="submit" class="button ion-refresh button-assertive button-block" ng-model="button.sixth" ng-click="click(button.sixth)" ng-class="button.sixth.clicked?'button-calm':'button-assertive'" ui-sref="memegenerator.memegenerator">
+        Reset
+      </button>
+    </div>
+
+  </ion-content>
+</ion-view>

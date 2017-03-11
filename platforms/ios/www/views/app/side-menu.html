@@ -1,0 +1,65 @@
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content class="post-size-14px">
+    <ion-nav-bar class="bar app-top-bar">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left" class="main-menu" expose-aside-when="large">
+    <ion-content>
+      <ion-list>
+        <ion-item class="heading-item item item-avatar" nav-clear menu-close ui-sref="#">
+          <div class="user-image-container">
+            <pre-img ratio="_1_1" helper-class="rounded-image">
+              <img class="user-image" ng-src="img/donald-pointing.png" spinner-on-load>
+            </pre-img>
+          </div>
+          <h2 class="greeting">Trump MEMES</h2>
+          <p class="greeting">Generator</p>
+        </ion-item>
+        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.gallery-reddit">
+          <i class="icon ion-home"></i>
+          <h2 class="menu-text">Memes</h2>
+        </ion-item>
+        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.mymemes">
+          <i class="icon ion-heart"></i>
+          <h2 class="menu-text">My Memes</h2>
+        </ion-item>
+        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="memegenerator.memegenerator">
+          <i class="icon ion-social-instagram"></i>
+          <h2 class="menu-text">Make Memes</h2>
+        </ion-item>
+        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.news">
+          <i class="icon ion-ios-paper"></i>
+          <h2 class="menu-text">News</h2>
+        </ion-item>
+        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.more">
+          <i class="icon ion-pizza"></i>
+          <h2 class="menu-text">More</h2>
+        </ion-item>
+
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>
+
+<ion-footer-bar align-title="left" ng-if="showFooter" style="padding:0px">
+  <div class="button-bar">
+    <a class="button ion-social-reddit-outline button-assertive" ng-model="button.third" ng-click="click(button.third)" ng-class="button.third.clicked?'button-calm':'button-assertive'" ui-sref="app.gallery-reddit"> Reddit</a>
+    <a class="button ion-ios-film button-assertive" ng-model="button.second" ng-click="click(button.second)" ng-class="button.second.clicked?'button-calm':'button-assertive'" ui-sref="app.gallery-giphy"> Giphy</a>
+    <a class="button ion-image button-assertive" ng-model="button.first" ng-click="click(button.first)" ng-class="button.first.clicked?'button-calm':'button-assertive'" ui-sref="app.gallery-imgur"> Imgur</a>
+
+  </div>
+</ion-footer-bar>
+
+<ion-content ng-class="{'has-footer': showFooter}">
+  <div id="map" data-tap-disabled="true" style="width: 500px;height: 500px"></div>
+  <pre>showFooter = {{showFooter}}</pre>
+</ion-content>

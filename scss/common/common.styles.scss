@@ -1,0 +1,315 @@
+// General reset styles
+*
+{
+	color: $content-color;
+}
+
+/* Source: http://snipplr.com/view/10979/css-cross-browser-word-wrap */
+.wordwrap {
+   white-space: pre-wrap;      /* CSS3 */
+   white-space: -moz-pre-wrap; /* Firefox */
+   white-space: -pre-wrap;     /* Opera <7 */
+   white-space: -o-pre-wrap;   /* Opera 7 */
+   word-wrap: break-word;      /* IE */
+}
+
+
+
+.bar.app-top-bar
+{
+	background-color: $top-bar-bg;
+
+	.title
+	{
+		color: $top-bar-color !important;
+		*
+		{
+			color: $top-bar-color !important;
+		}
+	}
+
+	.button
+	{
+		color: $top-bar-color !important;
+		*
+		{
+			color: $top-bar-color !important;
+		}
+	}
+}
+
+// Preload images aux styles (ratios)
+// Auto generate ratios for the whole app (see: http://stackoverflow.com/a/18120181/1116959)
+@each $ratio in $pre-img-ratios {
+  .pre-img._#{nth($ratio, 1)}_#{nth($ratio, 2)}
+  {
+    // Conserve aspect ratio (see: http://stackoverflow.com/a/10441480/1116959)
+    width: 100%;
+    padding-bottom: #{(nth($ratio, 2) / nth($ratio, 1)) * 100}%;
+  }
+}
+
+.pre-img
+{
+  position: relative;
+  background-color: $pre-img-bg;
+
+	// If the image is rounded
+	&.rounded-image
+	{
+		border-radius: 50%;
+	}
+
+  &.finish-loading
+  {
+    background-color: transparent;
+    border: none;
+
+		img
+	  {
+			visibility: visible;
+			opacity: 1;
+	  }
+  }
+
+  img
+  {
+    position: absolute;
+		left: 0px;
+		top: 0px;
+		visibility: hidden;
+		opacity: 0;
+		@include transition(visibility 0s linear, opacity 0.5s linear);
+  }
+}
+
+// spinner-on-load
+@include keyframes(spin) {
+  from {
+    @include transform(rotate(0deg));
+  }
+  to {
+    @include transform(rotate(359deg));
+  }
+}
+.spinner-on-load
+{
+	position: absolute;
+	font-size: $spinner-size;
+	width: $spinner-size;
+	height: $spinner-size;
+	line-height: $spinner-size;
+  color: $spinner-color;
+	@include animation(spin 2s infinite linear);
+	@include calc(top, "50% - #{($spinner-size/2)}");
+	@include calc(left, "50% - #{($spinner-size/2)}");
+}
+ion-spinner.spinner-on-load
+{
+	@include animation(none);
+  stroke: $spinner-color;
+	width: $spinner-svg-size;
+  height: $spinner-svg-size;
+	line-height: inherit;
+	@include calc(top, "50% - #{($spinner-svg-size/2)}");
+	@include calc(left, "50% - #{($spinner-svg-size/2)}");
+}
+
+// Multimedia background
+.multi-bg-outer
+{
+  position: relative;
+  background-color: rgba(darken($multi-bg, 10%), 0.7);
+  height: 100%;
+  @include transition(all ease-in-out .3s);
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: -2;
+
+  &.finish-loading
+  {
+    background-color: transparent;
+  }
+
+  .bg-overlay
+  {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: $overlay-bg;
+    z-index: -1;
+    opacity: 0.6;
+  }
+
+  .multi-bg
+  {
+    display: none;
+  }
+}
+
+.loading-container .loading
+{
+	background-color: $loading-background-color;
+  *
+  {
+    color: darken($loading-color, 5);
+		font-weight: 500;
+  }
+}
+
+
+
+.applyFooter{
+  margin-bottom: 43px !important;
+	padding:0px !important;
+}
+
+/**
+ * ion-footer-bar custom styles
+ */
+.footer-bar-custom {
+    background: #455D87;
+    color: #F6F7F0;
+    height: 43px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    z-index: 5
+}
+
+    .footer-bar-custom .item-left,
+    .footer-bar-custom .item-center,
+    .footer-bar-custom .item-right {
+        position: absolute;
+        width: 30px
+    }
+
+    .footer-bar-custom .item-left { left: 10px }
+
+    .footer-bar-custom .item-center {
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%)
+    }
+
+    .footer-bar-custom .item-right { right: 10px }
+
+
+//camera
+
+		/* Empty. Add your own CSS if you like */
+.get-pic{
+    margin-top: 50%;
+    margin-left: 30%;
+}
+
+.gallery-s{background: url("/img/gallery.png") no-repeat 68px 10px; color:#3f3f3f!important; font-size:20px!important;}
+.camera-s{background: url("/img/camera.png") no-repeat 62px 10px; color:#3f3f3f!important; font-size:20px!important;}
+
+.make-it{
+
+
+}
+
+.imageShow{
+    width: 100%;
+    position:relative;
+    margin:1em 0;}
+
+.user-img{
+width:80%;
+margin-left: 10%;
+
+}
+
+.text-input {
+  margin-top: 8%;
+}
+
+@font-face {
+  font-family: "Impact";
+  src: url("../fonts/impact.ttf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.imageShow .top-part {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  text-align: center;
+	font-family: Impact, Charcoal, sans-serif;
+	text-transform: uppercase;
+  color: #fff;
+	font-size: 2.0em;
+	text-shadow: 3px 3px 0px #000,
+              -3px -3px 0px #000,
+              -3px 3px 0px #000,
+              3px -3px 0px #000,
+              3px 0 0px #000,
+              -3px 0 0px #000,
+              0 3px 0px #000,
+              0 -3px 0px #000;
+  z-index: 50000;
+}
+.imageShow .bottom-part {
+  position: absolute;
+  bottom: 20px;
+	left: 10px;
+  right: 10px;
+  text-align: center;
+	font-family: Impact, Charcoal, sans-serif;
+	text-transform: uppercase;
+  color: #fff;
+	font-size: 2.0em;
+	text-shadow: 3px 3px 0px #000,
+              -3px -3px 0px #000,
+              -3px 3px 0px #000,
+              3px -3px 0px #000,
+              3px 0 0px #000,
+              -3px 0 0px #000,
+              0 3px 0px #000,
+              0 -3px 0px #000;
+	z-index: 50000;
+
+  }
+
+	.transparent {
+	  background: transparent !important;
+	}
+	.image-modal {
+	  width: 100% !important;
+	  height: 100%;
+	  top: 0 !important;
+	  left: 0 !important;
+	}
+	.fullscreen-image {
+	  max-width: 100%;
+	  max-height: 100%;
+	  bottom: 0;
+	  left: 0;
+	  margin: auto;
+	  overflow: auto;
+	  position: fixed;
+	  right: 0;
+	  top: 0;
+	}
+
+	/* Fix modal backdrop for smaller devices */
+	@media (max-width: 679px) {
+	  .active .modal-backdrop-bg {
+	    opacity: .5;
+	  }
+	  .modal-backdrop-bg {
+	    -webkit-transition: opacity 300ms ease-in-out;
+	    transition: opacity 300ms ease-in-out;
+	    background-color: #000;
+	    opacity: 0;
+	  }
+	}

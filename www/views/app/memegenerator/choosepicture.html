@@ -1,0 +1,28 @@
+<ion-view class="bookmarks-view">
+  <ion-nav-title>
+    <span>Make your own MEME</span>
+  </ion-nav-title>
+
+  <ion-content>
+    <div class="row bookmarks-container">
+      <div class="col col-center">
+        <div class="empty-results">
+          <h3>Choose a picture</h3>
+        </div>
+        <div class="item item-body bottom-content">
+          <button type="submit" class="button ion-image button-assertive button-block"  ng-model="button.fourth" ng-click="getPicture()" ng-class="button.fourth.clicked?'button-calm':'button-assertive'">
+            My Photos
+          </button>
+          <button type="submit" class="button ion-ios-star button-assertive button-block"  ng-model="button.fifth" ng-click="click(button.fifth)" ng-class="button.fifth.clicked?'button-calm':'button-assertive'" ui-sref="memegenerator.popular">
+            Popular
+          </button>
+          <button type="submit" class="button ion-android-cancel button-assertive button-block"  ng-model="button.sixth" ng-click="click(button.sixth)" ng-class="button.sixth.clicked?'button-calm':'button-assertive'" ui-sref="app.gallery-reddit">
+            Cancel
+          </button>
+
+        </div>
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>

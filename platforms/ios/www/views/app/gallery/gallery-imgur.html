@@ -1,0 +1,31 @@
+<ion-view class="feeds-categories-view"  cache-view="false">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <ion-nav-title>
+    <span>Imgur</span>
+  </ion-nav-title>
+  <ion-content>
+    <!-- Refresh to get the new posts -->
+    <ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh()">
+    </ion-refresher>
+
+    <div class="row categories-list">
+      <!-- rjm collection-repeat does not make this grid more responsive
+      look into caching, upgrading to collection-repeat -->
+
+      <div ng-repeat="img in imgurDataCache" class="col col-50">
+        <a class="feed-category" ui-sref="app.img_detail({imgTitle: img.title, imgLink: img.link, imgSource: 'Imgur'})">          <pre-img ratio="_1_1" helper-class="square-image">
+            <img class="category-image" ng-src="{{img.link}}" spinner-on-load>
+          </pre-img>
+          <div class="category-bg"></div>
+          <span class="category-title">{{img.title}}</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Infinit scroll -->
+    <ion-infinite-scroll immediate-check="false" on-infinite="loadMoreData()" distance="1%" icon="ion-loading-c">
+    </ion-infinite-scroll>
+  </ion-content>
+</ion-view>
